@@ -7,8 +7,7 @@ body{
     justify-content: center;
 }
 
-
-.container2 {
+.container {
     margin: auto;
     margin-top: 50px;
     padding: 20px;
@@ -18,7 +17,6 @@ body{
     box-shadow: 20px 30px 60px 15px rgba(255, 255, 255, 0.5), 
     inset -6px -6px 6px 6px rgba(0, 0, 0, 0.271);
 }
-
 
 .visor{
     min-height: 50px;
@@ -43,7 +41,6 @@ body{
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 0.7fr;
-
     margin-top: 20px;
     border: 6px solid rgba(0, 255, 72, 0.534);
     border-radius: 15px;
