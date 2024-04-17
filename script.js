@@ -36,4 +36,3 @@ class Calculadora {
         }
     }
 }
-et calculadora = new Calculadora();
