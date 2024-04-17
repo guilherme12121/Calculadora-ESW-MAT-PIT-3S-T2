@@ -20,12 +20,12 @@ body{
 
 .visor{
     color: rgb(0, 200, 0);
+    min-height: 65px;
     background-color: rgba(0, 0, 0, 0.603);
     text-align: right;
-    width: 80%;
+    width: 85%;
     margin: auto;
-    /* margin-top: 20px; */
-    padding: 10px;
+    padding: 8px;
     padding-right: 40px;
     border: 8px solid steelblue;
     border-radius: 20px;
