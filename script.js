@@ -157,3 +157,74 @@ function elevada_ao_Quadrado(){
     calculadora.numVisor = calculadora.numVisor.slice(0, 10);
     exibirVisor();
 }
+
+function adicionar_Numero(dig) {
+    if (calculadora.estadoLigada == false) return;
+    if (calculadora.estadoErro) return;
+    calculadora.recebeDigito(dig);
+    exibirVisor();
+}
+
+function adicionar_operacao(op) {
+    if (calculadora.estadoLigada == false) return;
+    if (calculadora.estadoErro) return;
+    if (calculadora.operador !== '') {
+        resolver_Resultado();
+    }
+    if (this.estadoErro) return;
+    calculadora.operador = op;
+    calculadora.numAnterior = calculadora.numVisor;
+
+   limpar_Visor();
+}
+
+function resolver_Resultado() {
+    if (calculadora.estadoLigada == false) return;
+    if (calculadora.estadoErro) return;
+    if (calculadora.operador == '') return;
+
+    if (calculadora.numVisor === '') {
+        if (calculadora.numAnterior !== '') {
+            calculadora.numVisor = calculadora.numAnterior;
+            exibirVisor();
+            return;
+        } else {
+            return;
+        }
+    }
+   
+    let resultado;
+    const num1 = parseFloat(calculadora.numAnterior);
+    const num2 = parseFloat(calculadora.numVisor);
+   
+    if (calculadora.operador === '+') {
+        resultado = num1 + num2;
+    } else if (calculadora.operador === '-') {
+        resultado = num1 - num2;
+    } else if (calculadora.operador === '*') {
+        resultado = num1 * num2;
+    } else if (calculadora.operador === '/') {
+        if (num2 == 0) {
+            calculadora.estadoErro = true;
+            calculadora.numVisor = 'Erro';
+            exibirVisor();
+            return;
+        }
+        resultado = num1 / num2;
+    } else if (calculadora.operador === '%') {
+        resultado = num1 * (num2 / 100);
+    }
+
+    calculadora.operador = '';
+    calculadora.ptDecimal = false;
+    calculadora.numAnterior = '';
+    calculadora.numVisor = String(resultado).slice(0, 10);
+    exibirVisor();
+}
+
+function troca_Sinal() {
+    if (calculadora.estadoLigada == false) return;
+    if (calculadora.estadoErro) return;
+    calculadora.numVisor = -parseFloat(calculadora.numVisor);
+    exibirVisor();
+}
