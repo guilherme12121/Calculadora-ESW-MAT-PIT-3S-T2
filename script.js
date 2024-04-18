@@ -107,3 +107,53 @@ function raiz_Quadrada() {
     calculadora.numVisor = calculadora.numVisor.slice(0, 10); 
     exibirVisor();  
 }
+
+function m_positivo() {
+    if (calculadora.estadoLigada == false) return;
+    if (calculadora.estadoErro) return;
+    if (calculadora.numVisor == '') {
+        calculadora.estadoErro = true;
+        calculadora.numVisor = 'Erro';
+        exibirVisor();
+        return;
+    }
+    calculadora.memoria += parseFloat(calculadora.numVisor);
+    calculadora.numVisor = calculadora.memoria;
+    exibirVisor();
+}
+
+function m_Negativo() {
+    if (calculadora.estadoLigada == false) return;
+    if (calculadora.estadoErro) return;
+    calculadora.memoria -= parseFloat(calculadora.numVisor);
+    calculadora.numVisor = calculadora.memoria;
+    exibirVisor();
+}
+
+function inverso() {
+    if (calculadora.estadoLigada == false) return;
+    if (calculadora.estadoErro) return;
+   
+    if (calculadora.numVisor == '0') {
+        calculadora.estadoErro = true;
+        calculadora.numVisor = 'Erro';
+        exibirVisor();
+        return;
+    }
+    calculadora.numVisor = 1 / parseFloat(calculadora.numVisor);
+    calculadora.numVisor = calculadora.numVisor.toString();
+    calculadora.numVisor = calculadora.numVisor.slice(0, 10);
+
+    exibirVisor();
+}
+
+function elevada_ao_Quadrado(){
+    if (calculadora.estadoLigada === false || calculadora.estadoErro) return;
+    const num = parseFloat(calculadora.numVisor);
+    if (isNaN(num)) return;
+
+    calculadora.numVisor = (num*num).toString();
+
+    calculadora.numVisor = calculadora.numVisor.slice(0, 10);
+    exibirVisor();
+}
